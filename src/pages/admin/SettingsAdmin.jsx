@@ -24,6 +24,7 @@ export default function SettingsAdmin() {
       .update({
         name: form.name?.trim() || 'Sem Frescura',
         logo_url: form.logo_url || null,
+        storefront_url: form.storefront_url || null,
         phone: form.phone?.trim() || '',
         address: form.address?.trim() || '',
         map_url: form.map_url?.trim() || '',
@@ -45,6 +46,12 @@ export default function SettingsAdmin() {
           <input className="input" value={form.name || ''} onChange={set('name')} required />
         </Field>
         <ImageInput label="Logo" folder="logo" value={form.logo_url} onChange={(url) => setForm((f) => ({ ...f, logo_url: url }))} />
+        <ImageInput
+          label="Foto da lanchonete (aparece em “Onde estamos”)"
+          folder="fachada"
+          value={form.storefront_url}
+          onChange={(url) => setForm((f) => ({ ...f, storefront_url: url }))}
+        />
         <Field label="WhatsApp da lanchonete" hint="Com DDD. Usado nos botões de acompanhar e cancelar pedido. Ex.: (32) 99999-9999">
           <input className="input" inputMode="tel" value={form.phone || ''} onChange={set('phone')} placeholder="(32) 99999-9999" />
         </Field>

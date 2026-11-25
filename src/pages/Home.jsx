@@ -91,28 +91,39 @@ export default function Home() {
       {/* Localização */}
       <section className="mx-auto max-w-5xl px-4 pt-12">
         <h2 className="section-title">Onde estamos</h2>
-        <div className="mt-5 flex flex-col gap-4 rounded-2xl bg-brand-900/70 p-5 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex items-start gap-3">
-            <PinIcon className="mt-0.5 shrink-0 text-accent" />
-            <div>
-              <p className="font-semibold">{settings.address || 'Endereço em breve'}</p>
-              {settings.opening_hours && <p className="mt-1 whitespace-pre-line text-sm text-cream/70">{settings.opening_hours}</p>}
+        <div className="mt-5 flex flex-col gap-4 rounded-2xl bg-brand-900/70 p-5">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex items-start gap-3">
+              <PinIcon className="mt-0.5 shrink-0 text-accent" />
+              <div>
+                <p className="font-semibold">{settings.address || 'Endereço em breve'}</p>
+                {settings.opening_hours && <p className="mt-1 whitespace-pre-line text-sm text-cream/70">{settings.opening_hours}</p>}
+              </div>
             </div>
+            {settings.map_url ? (
+              <a href={settings.map_url} target="_blank" rel="noreferrer" className="btn btn-primary shrink-0">
+                Ver no mapa
+              </a>
+            ) : settings.address ? (
+              <a
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(settings.address)}`}
+                target="_blank"
+                rel="noreferrer"
+                className="btn btn-primary shrink-0"
+              >
+                Ver no mapa
+              </a>
+            ) : null}
           </div>
-          {settings.map_url ? (
-            <a href={settings.map_url} target="_blank" rel="noreferrer" className="btn btn-primary shrink-0">
-              Ver no mapa
-            </a>
-          ) : settings.address ? (
-            <a
-              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(settings.address)}`}
-              target="_blank"
-              rel="noreferrer"
-              className="btn btn-primary shrink-0"
-            >
-              Ver no mapa
-            </a>
-          ) : null}
+
+          {settings.storefront_url && (
+            <img
+              src={settings.storefront_url}
+              alt={`Foto da ${settings.name}`}
+              loading="lazy"
+              className="aspect-[16/9] w-full rounded-xl object-cover"
+            />
+          )}
         </div>
       </section>
 
