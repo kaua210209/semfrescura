@@ -13,7 +13,7 @@ export function waLink(phone, text) {
 // Ordem do cardápio: Lanches, Porções, Bebidas e Mousses
 export const CATEGORIES = [
   { id: 'lanches', label: 'Lanches' },
-  { id: 'porcoes', label: 'Porções' },
+  { id: 'porcoes', label: 'Combos' },
   { id: 'bebidas', label: 'Bebidas' },
   { id: 'mousses', label: 'Mousses' },
 ]
